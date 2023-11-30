@@ -1,5 +1,11 @@
+# emacs
+export PATH=$PATH:$HOME/.config/emacs/doomemacs/bin
+
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # pkgconfig
 export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+
+# rancher desktop
+export PATH=$PATH:$HOME/.rd/bin
