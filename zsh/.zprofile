@@ -1,5 +1,5 @@
 # source common
-[ -f ~/.config/zsh/common ] && source ~/.config/zsh/zsh_exports
+[ -f ~/.config/zsh/common ] && source ~/.config/zsh/common
 
 # source dev
 [ -f ~/.config/zsh/dev ] && source ~/.config/zsh/dev
