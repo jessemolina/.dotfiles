@@ -9,20 +9,13 @@ My personal dotfile configurations; managed using [[https://www.gnu.org/software
 
 Directories within .dotfiles coincide to applications installed on the system.
 
-#+begin_src sh
-tree -L 1 .
-#+end_src
-
-#+RESULTS:
-: .
-: ├── README.org
+#+begin_example sh
 : ├── emacs
 : ├── skhd
 : ├── tmux
 : ├── yabai
 : └── zsh
-:
-: 6 directories, 1 file
+#+end_example
 
 
 Each application directory contains configuration data, structured to mirror their install path relative to the home directory.
@@ -34,16 +27,11 @@ Assume that `~/.config/yabai/yabairc` needs to be tracked as part of the yabai d
 Under `.dotfiles/yabai`, the configuration file is saved as `.config/yabai/yabairc`.
 
 #+begin_src sh
-tree -a yabai
-#+end_src
-
-#+RESULTS:
 : yabai
 : └── .config
 :     └── yabai
 :         └── yabairc
-:
-: 3 directories, 1 file
+#+end_src
 
 From the .dotfiles directory, the `stow` command can be called to build the symlinks appropriately.
 
