@@ -7,7 +7,7 @@ My personal dotfile configurations; managed using [[https://www.gnu.org/software
 
 * Overview
 
-Directories within = .dotfiles = coincide to applications installed on the system.
+Directories within =.dotfiles= coincide to applications installed on the system.
 
 #+begin_example sh
 : ├── emacs
@@ -22,9 +22,9 @@ Each application directory contains configuration files, structured to mirror th
 
 ** Example
 
-Assume that = ~/.config/yabai/yabairc = needs to be tracked as part of the yabai dotfiles.
+Assume that =~/.config/yabai/yabairc= needs to be tracked as part of the yabai dotfiles.
 
-Under = .dotfiles/yabai =, the configuration file is saved as = .config/yabai/yabairc =.
+Under =.dotfiles/yabai=, the configuration file is saved as =.config/yabai/yabairc=.
 
 #+begin_src sh
 : yabai
@@ -58,7 +58,7 @@ git clone https://github.com/jessemolina/.dotfiles ~/
 
 ** Stow
 *** All
-Every configuration within .dotfiles can be staged with the following command.
+Every configuration within =.dotfiles= can be staged with the following command.
 Use this approach selectively to avoid risks in file conflicts and linking obselete files.
 
 #+begin_src sh
