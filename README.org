@@ -5,6 +5,11 @@
 
 My personal dotfile configurations; managed using [[https://www.gnu.org/software/stow/][Stow]].
 
+
+#+CAPTION: screenshot of my current main machine
+#+NAME:   fig:screenshot
+[[screenshot.png]]
+
 * Overview
 
 Directories within =.dotfiles= coincide to applications installed on the system.
