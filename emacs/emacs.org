@@ -25,7 +25,7 @@ git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 Clone Doom Emacs under the config directory.
 
 #+begin_src sh
-git clone https//github.com/doomemacs/doomemacs ~/.config/emacs/doomemacs
+git clone https://github.com/doomemacs/doomemacs ~/.config/emacs/doomemacs
 #+end_src
 
 Assuming that the doom emacs bin has been exported, install doom.
