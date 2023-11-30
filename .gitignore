@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+zsh/.config/zsh/personal
+zsh/.config/zsh/work
