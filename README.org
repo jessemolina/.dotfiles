@@ -58,7 +58,7 @@ brew install stow
 Clone the dotfiles directory onto the home directory.
 
 #+begin_src sh
-git clone https://github.com/jessemolina/.dotfiles ~/
+git clone https://github.com/jessemolina/.dotfiles ~/.dotfiles
 #+end_src
 
 ** Stow
