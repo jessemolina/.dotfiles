@@ -1,21 +1,18 @@
-alias k="kubectl"
-alias tau="emacs -nw"
+# source common
+[ -f ~/.config/zsh/common ] && source ~/.config/zsh/zsh_exports
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# source dev
+[ -f ~/.config/zsh/dev ] && source ~/.config/zsh/dev
 
-export GH=$HOME/Lab/github
-export LXIO=$HOME/Lab/lambdaxio
-export GOPATH=/usr/local/go
-export CARGO_HOME=$HOME/.cargo
-export PATH=$PATH:$HOME/.config/emacs/doomemacs/bin
-export PATH=$PATH:$HOME/.rd/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$CARGO_HOME/bin
+# source operating system
+if [[ "$(uname)" == "Darwin" ]]; then
+    [ -f ~/.config/zsh/macos ] && source ~/.config/zsh/macos
+elif [[ "$(uname)" == "Linux" ]]; then
+    [ -f ~/.config/zsh/linux ] && source ~/.config/zsh/linux
+fi
 
-export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+# source personal
+[ -f ~/.config/zsh/personal ] && source ~/.config/zsh/personal
 
-export GREENLIGHT_DB_DSN="postgres://greenlight:pa55word@localhost/greenlight?sslmode=disable"
-
-set -o vi
-
-PS1='\[\e[01;32m\]\u\[\e[m\]:\[\e[01;34m\]\w\[\e[m\]$ '
+# source work
+[ -f ~/.config/zsh/work ] && source ~/.config/zsh/work

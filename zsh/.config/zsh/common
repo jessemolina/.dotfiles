@@ -1,0 +1,5 @@
+# keys
+set -o vi
+
+# prompt
+PS1='\[\e[01;32m\]\u\[\e[m\]:\[\e[01;34m\]\w\[\e[m\]$ '
