@@ -1,0 +1,313 @@
+#+title: Jesse Molina's Doom Emacs Configuration
+* config.el
+:PROPERTIES:
+:header-args: :tangle config.el
+:END:
+** defaults
+Place your private configuration here! Remember, you do not need to run 'doom sync' after modifying this file!
+
+#+begin_src emacs-lisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+#+begin_src emacs-lisp
+;; defaults
+#+end_src
+
+*** identity
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+It is optional.
+
+#+begin_src emacs-lisp
+(setq user-full-name "Jesse Molina"
+      user-mail-address "jesse@jessemolina.xyz")
+#+end_src
+
+*** fonts
+
+Doom exposes five (optional) variables for controlling fonts in Doom:
+
+- `doom-font' -- the primary font to use
+- `doom-variable-pitch-font' -- a non-monospace font (where applicable)
+- `doom-big-font' -- used for `doom-big-font-mode'; use this for presentations or streaming.
+- `doom-unicode-font' -- for unicode glyphs
+- `doom-serif-font' -- for the `fixed-pitch-serif' face
+
+See 'C-h v doom-font' for documentation and more examples of what they accept.
+For example:
+
+#+begin_src emacs-lisp :tangle no
+(setq doom-font (font-spec :family "SF Mono" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "SF Mono" :size 13))
+#+end_src
+
+*** theme
+There are two ways to load a theme.
+Both assume the theme is installed and available.
+You can either set `doom-theme' or manually load a theme with the `load-theme' function.
+This is the default:
+
+#+begin_src emacs-lisp
+(setq doom-theme 'modus-vivendi)
+#+end_src
+
+*** line numbers
+This determines the style of line numbers in effect.
+If set to `nil', line numbers are disabled.
+For relative line numbers, set this to `relative'.
+
+
+#+begin_src emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+*** org
+
+If you use `org' and don't want your org files in the default location below, change `org-directory'.
+It must be set before org loads!
+
+#+begin_src emacs-lisp
+(setq org-directory "~/Documents/org/")
+#+end_src
+
+** custom
+Here are some additional functions/macros that could help you configure Doom:
+
+- `load!' for loading external *.el files relative to this one
+- `use-package!' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to this file.
+   Emacs searches the `load-path' when you load packages with `require' or `use-package'.
+- `map!' for binding new keys
+
+To get information about any of these functions/macros, move the cursor over
+the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c c d') to jump to their definition and see how they are implemented.
+
+#+begin_src emacs-lisp
+;; custom
+#+end_src
+
+*** deft
+
+#+begin_src emacs-lisp
+;; deft
+(setq deft-directory "~/Documents/org"
+      deft-extensions '("org" "txt")
+      deft-recursive t)
+#+end_src
+*** godef
+
+#+begin_src emacs-lisp
+;; godef
+(map! :leader
+      :desc "godef other window"
+      "m h D" #'godef-describe)
+
+(map! :leader
+      :desc "godef this window"
+      "m h g" #'lsp-ui-doc-glance)
+
+
+(map! :leader
+      :desc "godef other window"
+      "m h J" #'godef-jump-other-window)
+
+(map! :leader
+      :desc "godef this window"
+      "m h j" #'godef-jump)
+#+end_src
+
+*** gofmt
+
+#+begin_src emacs-lisp
+;; gofmt
+(map! :leader
+      :desc "gofmt"
+      "m f" #'gofmt)
+#+end_src
+
+*** lsp-ui
+
+#+begin_src emacs-lisp
+;; lsp-ui-doc
+(after! lsp-ui
+  (setq lsp-ui-doc-show-with-mouse t))
+#+end_src
+
+*** org-agenda
+
+#+begin_src emacs-lisp
+(setq org-agenda-files (quote ("~/Documents/org/agenda")))
+#+end_src
+
+*** org-agenda-view
+
+#+begin_src emacs-lisp
+;; org-agenda
+(defun air-org-skip-subtree-if-priority (priority)
+  "Skip an agenda subtree if it has a priority of PRIORITY.
+
+PRIORITY may be one of the characters ?A, ?B, or ?C."
+  (let ((subtree-end (save-excursion (org-end-of-subtree t)))
+        (pri-value (* 1000 (- org-lowest-priority priority)))
+        (pri-current (org-get-priority (thing-at-point 'line t))))
+    (if (= pri-value pri-current)
+        subtree-end
+      nil)))
+
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+         ((tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "Current Focus:")))
+          (agenda "")
+          (alltodo ""
+                   ((org-agenda-skip-function
+                     '(or (air-org-skip-subtree-if-priority ?A)
+                          (org-agenda-skip-if nil '(scheduled deadline))))))))))
+
+#+end_src
+*** org-roam
+
+#+begin_src emacs-lisp
+;; org-roam
+(setq org-roam-directory "~/Documents/org/roam"
+      org-roam-completion-everywhere t
+      org-roam-dailies-directory "dailies/"
+      org-roam-capture-templates
+      '(("d" "draft" plain
+         (file "~/Documents/org/templates/draft.org")
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)
+        ("s" "subject" plain
+         (file "~/Documents/org/templates/wiki.org")
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)
+        ("r" "resource" plain
+         (file "~/Documents/org/templates/resource.org")
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)
+        ("p" "person" plain
+         (file "~/Documents/org/templates/person.org")
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)
+        ("l" "log" plain
+         (file "~/Documents/org/templates/log.org")
+         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+         :unnarrowed t)
+        )
+      org-roam-dailies-capture-templates
+      '(("d" "default" entry "* %<%H:%M>\n%?"
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%A, %Y-%m-%d>\n"))))
+#+end_src
+
+*** org-roam-bibtex
+*** org-roam-ui
+
+#+begin_src emacs-lisp
+;; org-roam-ui
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+#+end_src
+
+*** projectile
+
+#+begin_src emacs-lisp
+;; projectile
+(setq
+ projectile-project-search-path '("~/Lab"))
+#+end_src
+
+* packages.el
+:PROPERTIES:
+:header-args: :tangle packages.el
+:END:
+
+** defaults
+
+;; To install a package with Doom you must declare them here and run 'doom sync'
+;; on the command line, then restart Emacs for the changes to take effect -- or
+;; use 'M-x doom/reload'.
+
+
+;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
+;(package! some-package)
+
+;; To install a package directly from a remote git repo, you must specify a
+;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
+;; https://github.com/radian-software/straight.el#the-recipe-format
+;(package! another-package
+;  :recipe (:host github :repo "username/repo"))
+
+;; If the package you are trying to install does not contain a PACKAGENAME.el
+;; file, or is located in a subdirectory of the repo, you'll need to specify
+;; `:files' in the `:recipe':
+;(package! this-package
+;  :recipe (:host github :repo "username/repo"
+;           :files ("some-file.el" "src/lisp/*.el")))
+
+;; If you'd like to disable a package included with Doom, you can do so here
+;; with the `:disable' property:
+;(package! builtin-package :disable t)
+
+;; You can override the recipe of a built in package without having to specify
+;; all the properties for `:recipe'. These will inherit the rest of its recipe
+;; from Doom or MELPA/ELPA/Emacsmirror:
+;(package! builtin-package :recipe (:nonrecursive t))
+;(package! builtin-package-2 :recipe (:repo "myfork/package"))
+
+;; Specify a `:branch' to install a package from a particular branch or tag.
+;; This is required for some packages whose default branch isn't 'master' (which
+;; our package manager can't deal with; see radian-software/straight.el#279)
+;(package! builtin-package :recipe (:branch "develop"))
+
+;; Use `:pin' to specify a particular commit to install.
+;(package! builtin-package :pin "1a2b3c4d5e")
+
+
+;; Doom's packages are pinned to a specific commit and updated from release to
+;; release. The `unpin!' macro allows you to unpin single packages...
+;(unpin! pinned-package)
+;; ...or multiple packages
+;(unpin! pinned-package another-pinned-package)
+;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
+;(unpin! t)
+
+#+begin_src emacs-lisp
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+#+end_src
+** custom
+
+#+begin_src emacs-lisp
+;; custom
+#+end_src
+*** org-drill
+
+#+begin_src emacs-lisp :tangle no
+;; org-drill
+(package! org-drill)
+#+end_src
+
+*** org-roam-ui
+
+#+begin_src emacs-lisp
+;; org-roam-ui
+(package! websocket)
+(package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
+#+end_src
