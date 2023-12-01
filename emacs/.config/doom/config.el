@@ -5,7 +5,7 @@
 (setq user-full-name "Jesse Molina"
       user-mail-address "jesse@jessemolina.xyz")
 
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'wheatgrass)
 
 (setq display-line-numbers-type 'relative)
 
@@ -22,10 +22,6 @@
 (map! :leader
       :desc "godef other window"
       "m h D" #'godef-describe)
-
-(map! :leader
-      :desc "godef this window"
-      "m h g" #'lsp-ui-doc-glance)
 
 
 (map! :leader
@@ -45,9 +41,13 @@
 (after! lsp-ui
   (setq lsp-ui-doc-show-with-mouse t))
 
-(setq org-agenda-files (quote ("~/Documents/org/agenda")))
+(map! :leader
+      :desc "Glance document"
+      "c g" #'lsp-ui-doc-glance)
 
 ;; org-agenda
+(setq org-agenda-files (quote ("~/Documents/org/agenda")))
+
 (defun air-org-skip-subtree-if-priority (priority)
   "Skip an agenda subtree if it has a priority of PRIORITY.
 
