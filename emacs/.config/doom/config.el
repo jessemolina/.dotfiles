@@ -5,13 +5,14 @@
 (setq user-full-name "Jesse Molina"
       user-mail-address "jesse@jessemolina.xyz")
 
-(setq doom-theme 'wheatgrass)
+(setq doom-theme 'doom-monokai-ristretto)
 
 (setq display-line-numbers-type 'relative)
 
 (setq org-directory "~/Documents/org/")
 
-;; custom
+(setq display-time-format "%H:%M")
+(display-time-mode 1)
 
 ;; deft
 (setq deft-directory "~/Documents/org"
