@@ -2,4 +2,17 @@
 set -o vi
 
 # prompt
-PS1='\[\e[01;32m\]\u\[\e[m\]:\[\e[01;34m\]\w\[\e[m\]$ '
+#PS1='\[\e[01;32m\]\u\[\e[m\]:\[\e[01;34m\]\w\[\e[m\]$ '
+
+# ls
+alias ls='ls -G'    # Enable colorized output on macOS (use 'ls --color' on Linux)
+alias ll='ls -l'    # Long format: show detailed file information
+alias la='ls -A'    # List all entries except for '.' and '..'
+alias l='ls -lah'   # Long format including hidden files
+alias lr='ls -R'    # Recursive list
+alias lt='ls -lt'   # Sort by modification time, newest first
+alias lS='ls -lS'   # Sort by size, largest first
+alias lh='ls -lh'   # Long format with human-readable file sizes
+alias li='ls -i'    # Display inode numbers
+alias lrt='ls -lrt' # Long format, reverse sort by modification time
+
