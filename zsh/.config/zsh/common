@@ -1,18 +1,16 @@
 # keys
 set -o vi
 
-# prompt
-#PS1='\[\e[01;32m\]\u\[\e[m\]:\[\e[01;34m\]\w\[\e[m\]$ '
-
 # ls
-alias ls='ls -G'    # Enable colorized output on macOS (use 'ls --color' on Linux)
-alias ll='ls -l'    # Long format: show detailed file information
-alias la='ls -A'    # List all entries except for '.' and '..'
-alias l='ls -lah'   # Long format including hidden files
-alias lr='ls -R'    # Recursive list
-alias lt='ls -lt'   # Sort by modification time, newest first
-alias lS='ls -lS'   # Sort by size, largest first
-alias lh='ls -lh'   # Long format with human-readable file sizes
+alias la='ls -la'  # List all files, including hidden
+alias ld='ls -l | grep "^d"'  # List directories only
+alias ll='ls -l'  # Long format list
+alias lh='ls -lh'  # List with human-readable sizes
+alias lt='ls -lt'  # List sorted by modification time
+alias lS='ls -lS'  # List sorted by size
+alias lc='ls --color=auto'  # Colorized listing
+alias lf='ls -l | grep "^-"'  # List files only
+alias lr='ls -lr'  # Reverse sorting order
+alias l1='ls -1'  # List in single column
 alias li='ls -i'    # Display inode numbers
-alias lrt='ls -lrt' # Long format, reverse sort by modification time
 
