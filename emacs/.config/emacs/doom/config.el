@@ -1,21 +1,28 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; defaults
+(defvar my-directory-org(concat (getenv "DOCUMENTS") "/org")
+  "Path to my org directory.")
+(defvar my-directory-org-agenda(concat my-directory-org  "/org")
+  "Path to my org agenda directory.")
+(defvar my-directory-org-roam(concat my-directory-org  "/roam")
+  "Path to my org agenda directory.")
+(defvar my-directory-org-templates(concat my-directory-org  "/templates")
+  "Path to my org templates directory.")
 
 (setq user-full-name "Jesse Molina"
       user-mail-address "jesse@jessemolina.xyz")
 
-(setq doom-theme 'doom-monokai-ristretto)
+(setq doom-theme 'wheatgrass)
 
 (setq display-line-numbers-type 'relative)
 
-(setq org-directory "~/Documents/org/")
+(setq org-directory my-directory-org)
 
 (setq display-time-format "%H:%M")
 (display-time-mode 1)
 
 ;; deft
-(setq deft-directory "~/Documents/org"
+(setq deft-directory my-directory-org
       deft-extensions '("org" "txt")
       deft-recursive t)
 
@@ -47,7 +54,7 @@
       "c g" #'lsp-ui-doc-glance)
 
 ;; org-agenda
-(setq org-agenda-files (quote ("~/Documents/org/agenda")))
+(setq org-agenda-files my-directory-org-agenda)
 
 (defun air-org-skip-subtree-if-priority (priority)
   "Skip an agenda subtree if it has a priority of PRIORITY.
@@ -72,12 +79,12 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
                           (org-agenda-skip-if nil '(scheduled deadline))))))))))
 
 ;; org-roam
-(setq org-roam-directory "~/Documents/org/roam"
+(setq org-roam-directory my-directory-org-roam
       org-roam-completion-everywhere t
       org-roam-dailies-directory "dailies/"
       org-roam-capture-templates
       '(("d" "draft" plain
-         (file "~/Documents/org/templates/draft.org")
+         (file concat(my-directory-org-templates "/draft.org"))
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         ("s" "subject" plain
@@ -120,3 +127,4 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; projectile
 (setq
  projectile-project-search-path '("~/Lab"))
+
