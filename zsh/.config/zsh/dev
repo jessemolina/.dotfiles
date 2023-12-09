@@ -5,3 +5,5 @@ export PATH=$PATH:$GOPATH/bin
 # rust
 export CARGO_HOME=$HOME/.cargo
 export PATH=$PATH:$CARGO_HOME/bin
+
+[[ -f $HOME/.cargo/env ]] && . $HOME/.cargo/env
