@@ -1,0 +1,5 @@
+if [ -f $HOME/.Xmodmap ]; then
+    xmodmap $HOME/.Xmodmap
+fi
+
+exec leftwm
