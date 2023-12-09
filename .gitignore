@@ -5,3 +5,8 @@ tmp/
 
 zsh/.config/zsh/personal
 zsh/.config/zsh/work
+
+test/
+
+leftwm/.config/leftwm/themes/
+leftwm/.config/leftwm/themes.toml
