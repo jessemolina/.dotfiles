@@ -1,0 +1,10 @@
+# home
+export CONFIG=$HOME/.config
+export DOCUMENTS=$HOME/documents
+export DOTFILES=$HOME/.dotfiles
+export DOWNLOADS=$HOME/downloads
+export LAB=$HOME/lab
+
+# emacs
+export DOOMDIR=$CONFIG/emacs/doom
+export PATH=$PATH:$LAB/github/doomemacs/doomemacs/bin
