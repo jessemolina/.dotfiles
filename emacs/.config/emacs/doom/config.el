@@ -2,7 +2,7 @@
 
 (defvar my-directory-org(concat (getenv "DOCUMENTS") "/org")
   "Path to my org directory.")
-(defvar my-directory-org-agenda(concat my-directory-org  "/org")
+(defvar my-directory-org-agenda(concat my-directory-org  "/agenda")
   "Path to my org agenda directory.")
 (defvar my-directory-org-roam(concat my-directory-org  "/roam")
   "Path to my org agenda directory.")
