@@ -54,7 +54,7 @@
       "c g" #'lsp-ui-doc-glance)
 
 ;; org-agenda
-(setq org-agenda-files my-directory-org-agenda)
+(setq org-agenda-files (list my-directory-org-agenda))
 
 (defun air-org-skip-subtree-if-priority (priority)
   "Skip an agenda subtree if it has a priority of PRIORITY.
