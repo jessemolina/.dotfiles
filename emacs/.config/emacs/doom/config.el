@@ -14,6 +14,9 @@
 
 (setq doom-theme 'wheatgrass)
 
+(setq doom-font (font-spec :family "Fira Code" :size 14)
+      doom-variable-pitch-font (font-spec :family "Fira Code"))
+
 (setq display-line-numbers-type 'relative)
 
 (setq org-directory my-directory-org)
@@ -88,19 +91,19 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         ("s" "subject" plain
-         (file "~/Documents/org/templates/wiki.org")
+         (file concat(my-directory-org-templates "/wiki.org"))
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         ("r" "resource" plain
-         (file "~/Documents/org/templates/resource.org")
+         (file concat(my-directory-org-templates "/resource.org"))
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         ("p" "person" plain
-         (file "~/Documents/org/templates/person.org")
+         (file concat(my-directory-org-templates "/person.org"))
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         ("l" "log" plain
-         (file "~/Documents/org/templates/log.org")
+         (file concat(my-directory-org-templates "/log.org"))
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
          :unnarrowed t)
         )
