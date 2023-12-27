@@ -116,7 +116,9 @@
         (command: MoveToTag, value: "8", modifier: ["modkey", "Shift"], key: "8"),
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
 	(command: Execute, value: "emacs", modifier: ["modkey", "Shift"], key: "e"),
+	(command: Execute, value: "steam", modifier: ["modkey", "Shift"], key: "s"),
 	(command: Execute, value: "firefox", modifier: ["modkey", "Shift"], key: "b"),
+	(command: Execute, value: "discord", modifier: ["modkey", "Shift"], key: "d"),
     ],
     state_path: None,
 )
