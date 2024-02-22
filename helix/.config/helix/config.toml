@@ -1,0 +1,4 @@
+theme = "dark_high_contrast"
+
+[editor.file-picker]
+hidden = false
