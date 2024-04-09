@@ -5,7 +5,14 @@ local builtin = require('telescope.builtin')
 wk.register({
   b = {
     name = "buffer",
+    b = {"<cmd>:b#<CR>", "Switch buffer"},
+    d = {"<cmd>:bd<CR>", "Kill buffer"},
     f = {builtin.buffers, "find"},
+    n = {"<cmd>:bnext<CR>", "Next buffer"},
+    p = {"<cmd>:bprevious<CR>", "Previous buffer"},
+    R = {"<cmd>:e!<CR>", "Revert buffer"},
+    s = {"<cmd>:w<CR>", "Save buffer"},
+    w = {"<cmd>:YourWrapCommand<CR>", "Wrap buffer"},
   }
 }, {prefix = "<leader>"})
 
@@ -13,12 +20,30 @@ wk.register({
 wk.register({
   c = {
     name = "code",
+    a = {vim.lsp.buf.code_action, "action"},
+    f = {"<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "format"},
+    D = {builtin.lsp_type_definitions, "type definitions"},
     g = {
       name = "goto",
-      i = {builtin.lsp_implementations, "implementation"},
+      I = {builtin.lsp_implementations, "implementation"},
       d = {builtin.lsp_definitions, "definitions"},
-      t = {builtin.lsp_type_definitions, "type"},
-    }
+      D = {vim.lsp.buf.declaration, "declaration"},
+      r = {builtin.lsp_references, "references"},
+    },
+    k = {vim.lsp.buf.hover, "hover"},
+    m = {
+      name = "messages",
+      e = {vim.diagnostic.open_float, "error"},
+      q = {vim.diagnostic.setloclist, "quickfix"},
+      p = {vim.diagnostic.goto_prev, "previous diagnostic"},
+      n = {vim.diagnostic.goto_next, "next diagnostic"},
+    },
+    r = {vim.lsp.buf.rename, "rename"},
+    s = {
+      name = "symbols",
+      d = {builtin.lsp_document_symbols, "document"},
+      w = {builtin.lsp_dynamic_workspace_symbols, "workspace"},
+    },
   }
 }, {prefix = "<leader>"})
 
@@ -28,13 +53,19 @@ wk.register({
     name = "files",
     f = {builtin.find_files, "find"},
     g = {builtin.git_files, "git"},
+    n = {":enew<CR>", "new"},
+    o = {builtin.oldfiles, "old"},
+    s = {":w<CR>", "save"},
+    y = {":let @+=expand('%:p')<CR>", "yank path"},
   }
 }, {prefix = "<leader>"})
 
--- LSP
+-- Git
+
+-- Layout
 wk.register({
   l = {
-    name = "lsp",
+    name = "layout",
     e = {vim.diagnostic.open_float, "error"},
     q = {vim.diagnostic.setloclist, "quickfix"},
     p = {vim.diagnostic.goto_prev, "previous diagnostic"},
@@ -42,11 +73,27 @@ wk.register({
   }
 }, {prefix = "<leader>"})
 
+-- Open
+wk.register({
+  o = {
+    name = "open",
+    t = {"<cmd>Neotree toggle<CR>", "tree"},
+  }
+}, {prefix = "<leader>"})
+
 -- Search
 wk.register({
   s = {
     name = "search",
-    g = {builtin.grep_string, "grep"},
+    b = {builtin.buffers, "buffers"},
+    f = {builtin.find_files, "files"},
+    d = {builtin.diagnostic, "diagnostic"},
+    g = {builtin.live_grep, "grep"},
+    h = {builtin.help_tags, "help"},
+    k = {builtin.keymaps, "keymaps"},
+    o = {builtin.oldfiles, "old"},
+    r = {builtin.resume, "resume"},
+    w = {builtin.grep_string, "word"},
   }
 }, {prefix = "<leader>"})
 
