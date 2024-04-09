@@ -5,6 +5,25 @@ export DOTFILES=$HOME/.dotfiles
 export DOWNLOADS=$HOME/downloads
 export LAB=$HOME/lab
 
+# my
+export MYGH=$LAB/github/jessemolina
+
 # emacs
 export DOOMDIR=$CONFIG/emacs/doom
 export PATH=$PATH:$LAB/github/doomemacs/doomemacs/bin
+
+# helix
+alias hx='helix'
+
+# neovim
+export EDITOR='nvim'
+alias nv='nvim'
+
+# zellij
+alias zj='zellij'
+
+# gitui
+alias gui='gitui'
+
+# oatmeal
+export OATMEAL_CONFIG_FILE=$CONFIG/oatmeal/config.toml

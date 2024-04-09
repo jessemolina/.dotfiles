@@ -1,6 +1,16 @@
 # emacs
 export PATH=$PATH:$HOME/.config/emacs/doomemacs/bin
 
+# neovim
+export EDITOR='nvim'
+alias nv='nvim'
+
+# zellij
+alias zj='zellij'
+
+# gitui
+alias gui='gitui'
+
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
