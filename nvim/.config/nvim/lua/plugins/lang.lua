@@ -96,9 +96,13 @@ return {
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
+      -- FIX: Determine if snippets should be done via cmp_nvim_lsp
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
       for _, config in pairs(languages) do
         if config.lsp then
-          require('lspconfig')[config.lsp].setup({})
+          require('lspconfig')[config.lsp].setup({
+            capabilities = capabilities
+          })
         end
       end
     end
@@ -136,7 +140,7 @@ return {
   },
 
   {
-    'hrsh7th/nvim-cmp',     -- Autocompletion engine
+    'hrsh7th/nvim-cmp', -- Autocompletion engine
     event = 'InsertEnter',
     dependencies = {
       {
@@ -148,6 +152,7 @@ return {
           return 'make install_jsregexp'
         end)(),
         dependencies = {
+          -- TODO: Determine if snippets should be done with friendly-snippets
           -- {
           --   'rafamadriz/friendly-snippets',
           --   config = function()
@@ -203,6 +208,22 @@ return {
         },
       }
     end,
+  },
+
+  {
+    "ray-x/go.nvim", -- Go development plugin
+    dependencies = { 
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", 'gomod' },
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   }
+
 
 }

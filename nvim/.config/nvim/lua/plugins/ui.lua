@@ -1,11 +1,11 @@
 return {
 
   {
-    "catppuccin/nvim", -- Pastel colors, balanced between low and high contrast 
+    "catppuccin/nvim", -- Pastel colors, balanced between low and high contrast
     name = "catppuccin",
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme("catppuccin")
     end,
     config = function()
       require("catppuccin").setup({
@@ -22,27 +22,27 @@ return {
   },
 
   {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
     config = function()
-      require('dashboard').setup {
+      require("dashboard").setup({
         theme = "hyper",
         config = {
           header = {
-            '',
-            '',
-            '',
-            '',
-            ' █████╗ ███████╗ ██████╗ ██╗   ██╗ █████╗ ██████╗ ███████╗██████╗     ██╗      █████╗ ██████╗ ███████╗',
-            '██╔══██╗██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║     ██╔══██╗██╔══██╗██╔════╝',
-            '╚█████╔╝███████╗██║   ██║██║   ██║███████║██████╔╝█████╗  ██║  ██║    ██║     ███████║██████╔╝███████╗',
-            '██╔══██╗╚════██║██║▄▄ ██║██║   ██║██╔══██║██╔══██╗██╔══╝  ██║  ██║    ██║     ██╔══██║██╔══██╗╚════██║',
-            '╚█████╔╝███████║╚██████╔╝╚██████╔╝██║  ██║██║  ██║███████╗██████╔╝    ███████╗██║  ██║██████╔╝███████║',
-            ' ╚════╝ ╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝',
-            '',
-            '',
-            '',
-            '',
+            "",
+            "",
+            "",
+            "",
+            " █████╗ ███████╗ ██████╗ ██╗   ██╗ █████╗ ██████╗ ███████╗██████╗     ██╗      █████╗ ██████╗ ███████╗",
+            "██╔══██╗██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║     ██╔══██╗██╔══██╗██╔════╝",
+            "╚█████╔╝███████╗██║   ██║██║   ██║███████║██████╔╝█████╗  ██║  ██║    ██║     ███████║██████╔╝███████╗",
+            "██╔══██╗╚════██║██║▄▄ ██║██║   ██║██╔══██║██╔══██╗██╔══╝  ██║  ██║    ██║     ██╔══██║██╔══██╗╚════██║",
+            "╚█████╔╝███████║╚██████╔╝╚██████╔╝██║  ██║██║  ██║███████╗██████╔╝    ███████╗██║  ██║██████╔╝███████║",
+            " ╚════╝ ╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝",
+            "",
+            "",
+            "",
+            "",
           },
 
           week_header = {
@@ -50,36 +50,36 @@ return {
           },
 
           shortcut = {
-            { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+            { desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
             {
-              icon = ' ',
-              icon_hl = '@variable',
-              desc = 'Files',
-              group = 'Label',
-              action = 'Telescope find_files',
-              key = 'f',
+              icon = " ",
+              icon_hl = "@variable",
+              desc = "Files",
+              group = "Label",
+              action = "Telescope find_files",
+              key = "f",
             },
             {
-              desc = ' Apps',
-              group = 'DiagnosticHint',
-              action = 'Telescope app',
-              key = 'a',
+              desc = " Apps",
+              group = "DiagnosticHint",
+              action = "Telescope app",
+              key = "a",
             },
             {
-              desc = ' dotfiles',
-              group = 'Number',
-              action = 'Telescope dotfiles',
-              key = 'd',
+              desc = " dotfiles",
+              group = "Number",
+              action = "Telescope dotfiles",
+              key = "d",
             },
           },
-        }
-      }
+        },
+      })
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-neo-tree/neo-tree.nvim", -- Filesystem sidebar 
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -88,4 +88,13 @@ return {
     },
   },
 
+  {
+    "folke/noice.nvim", -- UI for messages, cmdline, and popupmenu
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
 }
