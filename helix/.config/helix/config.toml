@@ -4,9 +4,20 @@ theme = "dark_high_contrast"
 line-number = "relative"
 bufferline = "never"
 
+[editor.cursor-shape]
+insert = "bar"
+
 [editor.file-picker]
 hidden = false
 
 [editor.lsp]
 display-messages = true
 display-inlay-hints = false
+
+[keys.normal]
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_before"
+
+# [keys.normal."space"]
+# f = "file_picker_in_current_directory"
+# F = "file_picker"
