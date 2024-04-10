@@ -64,6 +64,13 @@ wk.register({
       d = { builtin.lsp_document_symbols, "Document" },
       w = { builtin.lsp_dynamic_workspace_symbols, "Workspace" },
     },
+    t = {
+      name = "Test",
+      f = { "<cmd>GoTestFunc<CR>", "Function" },
+      F = { "<cmd>GoTestFunc<CR>", "File" },
+      P = { "<cmd>GoTestPkg<CR>", "Package" },
+    },
+
   }
 }, { prefix = "<leader>" })
 
