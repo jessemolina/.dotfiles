@@ -12,7 +12,7 @@
 (setq user-full-name "Jesse Molina"
       user-mail-address "jesse@jessemolina.xyz")
 
-(setq doom-theme 'wheatgrass)
+(setq doom-theme 'doom-ir-black)
 
 (setq doom-font (font-spec :family "Fira Code" :size 14)
       doom-variable-pitch-font (font-spec :family "Fira Code"))
@@ -55,6 +55,10 @@
 (map! :leader
       :desc "Glance document"
       "c g" #'lsp-ui-doc-glance)
+
+;; ob-mermaid
+(setq ob-mermaid-cli-path "/usr/bin/mmdc")
+(after! org (add-to-list 'org-babel-load-languages '(mermaid . t)))
 
 ;; org-agenda
 (setq org-agenda-files (list my-directory-org-agenda))
