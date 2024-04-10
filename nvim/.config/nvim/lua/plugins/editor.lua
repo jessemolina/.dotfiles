@@ -1,23 +1,31 @@
 return {
 
   {
-  'tpope/vim-sleuth' -- Auto detect tabstop and shiftwidth based on file type
+    "tpope/vim-sleuth", -- Auto detect tabstop and shiftwidth based on file type
   },
 
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-      local configs = require("nvim-treesitter.configs")
+    "numToStr/Comment.nvim", -- Comment visual regions and lines
+  },
 
-      configs.setup({
-          ensure_installed = { "lua", "go", "rust", "python", "bash", "markdown" },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },  
-        })
-    end
-  }
+  {
+    "lewis6991/gitsigns.nvim", -- Add git related signs to the gutter
+    opts = {
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+    },
+  },
 
-
+  {
+    "folke/todo-comments.nvim", -- Todo highlighter and check list
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      signs = false,
+    }
+  },
 }

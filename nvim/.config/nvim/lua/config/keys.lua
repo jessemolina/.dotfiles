@@ -77,9 +77,18 @@ wk.register({
 wk.register({
   o = {
     name = "open",
-    t = {"<cmd>Neotree toggle<CR>", "tree"},
+    p = {"<cmd>Neotree toggle<CR>", "project"},
   }
 }, {prefix = "<leader>"})
+
+-- Project
+wk.register({
+  p = {
+    name = "project",
+    t = {"<cmd>TodoTelescope<CR>", "todo"},
+  }
+}, {prefix = "<leader>"})
+
 
 -- Search
 wk.register({
