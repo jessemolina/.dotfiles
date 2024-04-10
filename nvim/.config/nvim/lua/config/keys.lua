@@ -131,7 +131,7 @@ wk.register({
     name = "Quit",
     q = { "<cmd>q<CR>", "Quit" },
     Q = { "<cmd>q!<CR>", "Force quit" },
-    s = { "<cmd>qs<CR>", "Save quit" },
+    s = { "<cmd>wq<CR>", "Save quit" },
   }
 }, { prefix = "<leader>" })
 
