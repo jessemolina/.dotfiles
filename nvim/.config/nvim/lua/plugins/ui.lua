@@ -22,6 +22,16 @@ return {
   },
 
   {
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", opt = true },
+    init = function()
+      require("lualine").setup({
+        options = { section_separators = "", component_separators = "" },
+      })
+    end,
+  },
+
+  {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     config = function()
@@ -79,7 +89,7 @@ return {
   },
 
   {
-    "nvim-neo-tree/neo-tree.nvim", -- Filesystem sidebar 
+    "nvim-neo-tree/neo-tree.nvim", -- Filesystem sidebar
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
