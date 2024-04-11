@@ -22,7 +22,7 @@ return {
   },
 
   {
-    "nvim-lualine/lualine.nvim",
+    "nvim-lualine/lualine.nvim", -- Status line
     requires = { "nvim-tree/nvim-web-devicons", opt = true },
     init = function()
       require("lualine").setup({
@@ -32,7 +32,7 @@ return {
   },
 
   {
-    "nvimdev/dashboard-nvim",
+    "nvimdev/dashboard-nvim", -- Startup dashboard
     event = "VimEnter",
     config = function()
       require("dashboard").setup({
