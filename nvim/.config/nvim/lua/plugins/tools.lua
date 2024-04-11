@@ -70,8 +70,8 @@ return {
   },
 
   {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
+    "epwalsh/obsidian.nvim", -- Zettelkasten note taking
+    version = "*",
     lazy = true,
     ft = "markdown",
     dependencies = {
@@ -81,8 +81,12 @@ return {
       require("obsidian").setup({
         workspaces = {
           {
-            name = "notes",
+            name = "linux",
             path = "~/documents/obsidian/notes",
+          },
+          {
+            name = "mac",
+            path = "~/Documents/obsidian/notes",
           },
         },
 
@@ -100,7 +104,7 @@ return {
 
         note_frontmatter_func = function(note)
           -- This is equivalent to the default frontmatter function.
-          local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
+          local out = { id = note.id, aliases = note.aliases, tags = note.tags }
 
           -- Remove "daily-notes" tag if it exists
           if note.tags ~= nil then
