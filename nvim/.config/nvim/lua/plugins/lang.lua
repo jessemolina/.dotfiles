@@ -32,6 +32,10 @@ local languages = {
     lsp = "marksman"
   },
 
+  markdown_inline = {
+    treesitter = true
+  },
+
   ansible = {
     lsp = "ansiblels",
     treesitter = false
@@ -212,7 +216,7 @@ return {
 
   {
     "ray-x/go.nvim", -- Go development plugin
-    dependencies = { 
+    dependencies = {
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",

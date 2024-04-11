@@ -26,8 +26,9 @@ wk.register({
   b = {
     name = "Buffer",
     b = { "<cmd>:b#<CR>", "Switch buffer" },
-    d = { "<cmd>:bd<CR>", "Kill buffer" },
+    d = { "<cmd>:bd<CR>", "Delete buffer" },
     f = { builtin.buffers, "find" },
+    k = { "<cmd>:bd!<CR>", "Kill buffer" },
     n = { "<cmd>:bnext<CR>", "Next buffer" },
     p = { "<cmd>:bprevious<CR>", "Previous buffer" },
     R = { "<cmd>:e!<CR>", "Revert buffer" },
@@ -69,6 +70,7 @@ wk.register({
       f = { "<cmd>GoTestFunc<CR>", "Function" },
       F = { "<cmd>GoTestFunc<CR>", "File" },
       P = { "<cmd>GoTestPkg<CR>", "Package" },
+      s = { "<cmd>lua run_current_go_test_in_zellij()<CR>", "Single" },
     },
 
   }
@@ -90,13 +92,13 @@ wk.register({
 -- Git
 wk.register({
   g = {
-    name = "git",
+    name = "Git",
     g = { "<cmd>Neogit<CR>", "neogit" },
   }
 }, { prefix = "<leader>" })
 
 -- Layout
--- TODO: Determine whether layout keys are needed; 
+-- TODO: Determine whether layout keys are needed;
 wk.register({
   l = {
     name = "Layout",
@@ -107,13 +109,29 @@ wk.register({
   }
 }, { prefix = "<leader>" })
 
+-- Notes
+wk.register({
+  n = {
+    name = "Notes",
+    d = {
+      name = "Dailies",
+      t = { "<cmd>ObsidianToday<CR>", "Today" },
+      y = { "<cmd>ObsidianToday -1<CR>", "Yesterday" },
+    },
+    f = { "<cmd>ObsidianQuickSwitch<CR>", "Find" },
+    s = { "<cmd>ObsidianSearch<CR>", "Search" },
+    n = { "<cmd>ObsidianNew<CR>", "New" },
+    t = { "<cmd>ObsidianTags<CR>", "Tags" },
+    T = { "<cmd>ObsidianTemplate<CR>", "Template" },
+  }
+}, { prefix = "<leader>" })
+
 -- Open
 wk.register({
   o = {
     name = "Open",
     p = { "<cmd>Neotree toggle<CR>", "Project" },
     d = { "<cmd>DBUI<CR>", "Database" },
-
   }
 }, { prefix = "<leader>" })
 
@@ -135,8 +153,6 @@ wk.register({
   }
 }, { prefix = "<leader>" })
 
-
-
 -- Search
 wk.register({
   s = {
@@ -157,7 +173,6 @@ wk.register({
 wk.register({
   w = {
     name = "Window",
-    -- Window movement mappings
     h = { "<C-w>h", "Move left" },
     j = { "<C-w>j", "Move down" },
     k = { "<C-w>k", "Move up" },
@@ -176,8 +191,6 @@ wk.register({
     ["|"] = { "<C-w>x", "Max out width" },
     ["_"] = { "<C-w>x", "Max out height" },
     ["="] = { "<C-w>x", "Equally high and wide" },
-    -- Add more window mappings here if needed
   },
 }, { prefix = "<leader>" })
 
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

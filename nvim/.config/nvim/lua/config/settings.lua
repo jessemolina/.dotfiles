@@ -41,6 +41,8 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 
+vim.opt.conceallevel = 1
+
 -- Keymap
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
