@@ -1,6 +1,7 @@
 return {
-  "numToStr/Comment.nvim", -- Comment visual regions and lines
-  config = function()
-    require("Comment").setup()
-  end,
+  "folke/todo-comments.nvim",   -- Todo highlighter and check list
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    signs = false,
+  }
 }
