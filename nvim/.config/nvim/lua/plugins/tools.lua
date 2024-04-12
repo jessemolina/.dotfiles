@@ -84,10 +84,6 @@ return {
             name = "linux",
             path = "~/documents/obsidian/notes",
           },
-          {
-            name = "mac",
-            path = "~/Documents/obsidian/notes",
-          },
         },
 
         disable_frontmatter = false,
