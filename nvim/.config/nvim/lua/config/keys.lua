@@ -14,7 +14,7 @@ wk.register({
   },
   m = {
     name = "Molten",
-    l = { "<cmd>:MoltenEvaluateLine<CR>", "Evaluate Line" },       -- Adding this line
+    l = { "<cmd>:MoltenEvaluateLine<CR>", "Evaluate Line" },         -- Adding this line
     o = { "<cmd>:MoltenEvaluateOperator<CR>", "Evaluate Operator" }, -- Adding this line
     v = { "<cmd>:MoltenEvaluateVisual<CR>", "Evaluate Visual" },
   },
@@ -173,12 +173,6 @@ wk.register({
     N = { "<cmd>ObsidianNew<CR>", "New" },
     t = { "<cmd>ObsidianTags<CR>", "Tags" },
     T = { "<cmd>ObsidianTemplate<CR>", "Template" },
-    h = {
-      function()
-        notes.new("wiki,resource")
-      end,
-      "Hello",
-    },
   },
 }, { prefix = "<leader>" })
 
