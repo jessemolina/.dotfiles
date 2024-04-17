@@ -145,10 +145,16 @@ wk.register({
     d = {
       name = "Dailies",
       t = { "<cmd>ObsidianToday<CR>", "Today" },
+      T = { "<cmd>ObsidianTomorrow<CR>", "Tomorrow" },
       y = { "<cmd>ObsidianToday -1<CR>", "Yesterday" },
     },
     f = { "<cmd>ObsidianQuickSwitch<CR>", "Find" },
-    s = { "<cmd>ObsidianSearch<CR>", "Search" },
+    g = {
+      name = "Goto",
+      l = { "<cmd>ObsidianFollowLink<CR>", "Link" },
+      s = { "<cmd>ObsidianFollowLink hsplit<CR>", "Split" },
+      v = { "<cmd>ObsidianFollowLink vsplit<CR>", "Vertical" },
+    },
     n = {
       name = "New",
       l = {
@@ -157,6 +163,7 @@ wk.register({
         end,
         "Log",
       },
+      n = { "<cmd>ObsidianNew<CR>", "New" },
       r = {
         function()
           notes.new("resource")
@@ -170,9 +177,14 @@ wk.register({
         "Wiki",
       },
     },
-    N = { "<cmd>ObsidianNew<CR>", "New" },
-    t = { "<cmd>ObsidianTags<CR>", "Tags" },
-    T = { "<cmd>ObsidianTemplate<CR>", "Template" },
+    s = {
+      name = "Search",
+      b = { "<cmd>ObsidianBacklinks<CR>", "Backlinks" },
+      l = { "<cmd>ObsidianLinks<CR>", "Links" },
+      g = { "<cmd>ObsidianSearch<CR>", "Grep" },
+      t = { "<cmd>ObsidianTags<CR>", "Tags" },
+    },
+    t = { "<cmd>ObsidianTemplate<CR>", "Template" },
   },
 }, { prefix = "<leader>" })
 
