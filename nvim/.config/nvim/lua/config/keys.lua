@@ -142,6 +142,7 @@ wk.register({
 wk.register({
   n = {
     name = "Notes",
+    c = { "<cmd>ObsidianToggleCheckbox<CR>", "Checkbox" },
     d = {
       name = "Dailies",
       t = { "<cmd>ObsidianToday<CR>", "Today" },
