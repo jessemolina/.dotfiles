@@ -1,5 +1,6 @@
 local wk = require("which-key")
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
+local notes = require("plugins.custom.notes")
 
 -- Normal Mode
 wk.register({
@@ -9,7 +10,15 @@ wk.register({
     d = { builtin.lsp_definitions, "Definitions" },
     D = { vim.lsp.buf.declaration, "Declaration" },
     r = { builtin.lsp_references, "References" },
+    e = { "<cmd>:MoltenEvaluateOperator<CR>", "Evaluate code" }, -- Adding this line
   },
+  m = {
+    name = "Molten",
+    l = { "<cmd>:MoltenEvaluateLine<CR>", "Evaluate Line" },       -- Adding this line
+    o = { "<cmd>:MoltenEvaluateOperator<CR>", "Evaluate Operator" }, -- Adding this line
+    v = { "<cmd>:MoltenEvaluateVisual<CR>", "Evaluate Visual" },
+  },
+
   K = { vim.lsp.buf.hover, "Hover documentation" },
   ["["] = {
     name = "Previous",
@@ -34,7 +43,7 @@ wk.register({
     R = { "<cmd>:e!<CR>", "Revert buffer" },
     s = { "<cmd>:w<CR>", "Save buffer" },
     w = { "<cmd>:YourWrapCommand<CR>", "Wrap buffer" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Code
@@ -72,8 +81,7 @@ wk.register({
       P = { "<cmd>GoTestPkg<CR>", "Package" },
       s = { "<cmd>lua run_current_go_test_in_zellij()<CR>", "Single" },
     },
-
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Files
@@ -86,7 +94,7 @@ wk.register({
     o = { builtin.oldfiles, "Old" },
     s = { ":w<CR>", "Save" },
     y = { ":let @+=expand('%:p')<CR>", "Yank path" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Git
@@ -94,7 +102,7 @@ wk.register({
   g = {
     name = "Git",
     g = { "<cmd>Neogit<CR>", "neogit" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Layout
@@ -106,7 +114,28 @@ wk.register({
     q = { vim.diagnostic.setloclist, "Quickfix" },
     p = { vim.diagnostic.goto_prev, "Previous diagnostic" },
     n = { vim.diagnostic.goto_next, "Next diagnostic" },
-  }
+  },
+}, { prefix = "<leader>" })
+
+-- Modes
+wk.register({
+  m = {
+    name = "Mode",
+    m = {
+      name = "Molten",
+      i = {
+        name = "Initialize",
+        i = { "<cmd>MoltenInfo<CR>", "Info" },
+        p = { "<cmd>MoltenInit python3<CR>", "Python" },
+        r = { "<cmd>MoltenInit rust<CR>", "Rust" },
+      },
+      e = {
+        name = "Evaluate",
+        l = { "<cmd>MoltenEvaluateLine<CR>", "Line" },
+        o = { "<C-u>MoltenEvaluateOperator<CR>", "Operator" },
+      },
+    },
+  },
 }, { prefix = "<leader>" })
 
 -- Notes
@@ -120,10 +149,37 @@ wk.register({
     },
     f = { "<cmd>ObsidianQuickSwitch<CR>", "Find" },
     s = { "<cmd>ObsidianSearch<CR>", "Search" },
-    n = { "<cmd>ObsidianNew<CR>", "New" },
+    n = {
+      name = "New",
+      l = {
+        function()
+          notes.new("log")
+        end,
+        "Log",
+      },
+      r = {
+        function()
+          notes.new("resource")
+        end,
+        "Resource",
+      },
+      w = {
+        function()
+          notes.new("wiki")
+        end,
+        "Wiki",
+      },
+    },
+    N = { "<cmd>ObsidianNew<CR>", "New" },
     t = { "<cmd>ObsidianTags<CR>", "Tags" },
     T = { "<cmd>ObsidianTemplate<CR>", "Template" },
-  }
+    h = {
+      function()
+        notes.new("wiki,resource")
+      end,
+      "Hello",
+    },
+  },
 }, { prefix = "<leader>" })
 
 -- Open
@@ -131,8 +187,8 @@ wk.register({
   o = {
     name = "Open",
     p = { "<cmd>Neotree toggle<CR>", "Project" },
-    d = { "<cmd>DBUI<CR>", "Database" },
-  }
+    d = { "<cmd>DBUIToggle<CR>", "Database" },
+  },
 }, { prefix = "<leader>" })
 
 -- Project
@@ -140,7 +196,7 @@ wk.register({
   p = {
     name = "Project",
     t = { "<cmd>TodoTelescope<CR>", "Todo" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Quit
@@ -150,7 +206,7 @@ wk.register({
     q = { "<cmd>q<CR>", "Quit" },
     Q = { "<cmd>q!<CR>", "Force quit" },
     s = { "<cmd>wq<CR>", "Save quit" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Search
@@ -166,7 +222,7 @@ wk.register({
     o = { builtin.oldfiles, "Old" },
     r = { builtin.resume, "Resume" },
     w = { builtin.grep_string, "Word" },
-  }
+  },
 }, { prefix = "<leader>" })
 
 -- Window
@@ -193,4 +249,3 @@ wk.register({
     ["="] = { "<C-w>x", "Equally high and wide" },
   },
 }, { prefix = "<leader>" })
-
