@@ -43,6 +43,8 @@ vim.opt.hlsearch = true
 
 vim.opt.conceallevel = 1
 
+vim.opt.shiftwidth = 4
+
 -- Keymap
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
