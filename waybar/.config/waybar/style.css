@@ -73,7 +73,21 @@ button {
 #battery,
 #backlight,
 #tray,
+#network,
+#wireplumber,
 #load {
+    padding: 0 10px;
+    background-color: #000000; /* Base: Mantle */
+    color: #cdd6f4; /* Text color: Text */
+}
+
+#cpu{
+    padding: 0 10px;
+    background-color: #000000; /* Base: Mantle */
+    color: #cdd6f4; /* Text color: Text */
+}
+
+#memory{
     padding: 0 10px;
     background-color: #000000; /* Base: Mantle */
     color: #cdd6f4; /* Text color: Text */
