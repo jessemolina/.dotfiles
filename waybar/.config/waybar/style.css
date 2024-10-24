@@ -1,101 +1,128 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Fira Code";
-    font-size: 10px;
-    min-height: 0;
+    font-size: 14px;
+    border-radius: 5px;
 }
 
 window#waybar {
-    background: transparent;
-    color: white;
+    font-family: "Fira Code", monospace; /* Updated to Fira Code */
+    background-color: transparent;
+    border-bottom: 0px;
+    color: #cdd6f4; /* Text color: Text */
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-#window {
-    font-weight: bold;
-    font-family: "Fira Code";
+window#waybar.hidden {
+    opacity: 0.2;
 }
-/*
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+.modules-right {
+    margin: 10px 10px 0 0;
+}
+.modules-center {
+    margin: 10px 0 0 0;
+}
+.modules-left {
+    margin: 10px 0 0 10px;
+}
+
+button {
+    border: none;
+}
+
 #workspaces {
-    padding: 0 5px;
+    background-color: #000000; /* Base: Mantle */
 }
-*/
 
 #workspaces button {
     padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+    background-color: transparent;
+    color: #cdd6f4; /* Text color: Text */
+    border-radius: 0;
+}
+
+#workspaces button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#workspaces button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#workspaces button:hover {
+    color: #fab387; /* Hover color: Peach */
 }
 
 #workspaces button.focused {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+    background-color: #45475a; /* Focused: Surface1 */
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8; /* Urgent: Red */
+}
+
+#idle_inhibitor,
+#scratchpad,
+#mode,
+#window,
+#clock,
+#battery,
+#backlight,
+#tray,
+#load {
+    padding: 0 10px;
+    background-color: #000000; /* Base: Mantle */
+    color: #cdd6f4; /* Text color: Text */
 }
 
 #mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+    background-color: #a6e3a1; /* Mode: Green */
+    color: #000000; /* Text color */
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
-    margin: 0 2px;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#battery {
-}
-
-#battery icon {
-    color: red;
-}
-
-#battery.charging {
+#battery.charging, #battery.plugged {
+    background-color: #a6e3a1; /* Charging: Green */
+    color: #000000; /* Text color */
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        background-color: #000000; /* Base: Mantle */
+        color: #cdd6f4; /* Text color */
     }
 }
 
-#battery.warning:not(.charging) {
-    color: white;
+#battery.critical:not(.charging) {
+    background-color: #f38ba8; /* Critical: Red */
+    color: #cdd6f4; /* Text color */
     animation-name: blink;
     animation-duration: 0.5s;
-    animation-timing-function: linear;
+    animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#cpu {
+label:focus {
+    background-color: #000000;
 }
 
-#memory {
+#tray > .passive {
+    -gtk-icon-effect: dim;
 }
 
-#network {
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
 }
 
-#network.disconnected {
-    background: #f53c3c;
+#tray menu {
+    font-family: "Fira Code", sans-serif; /* Updated to Fira Code */
 }
 
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
-#tray {
+#scratchpad.empty {
+    background: transparent;
 }
 
